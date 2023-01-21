@@ -26,8 +26,24 @@ public class SharkOdo {
         service.scheduleAtFixedRate(this::updatePose, 0, delay, TimeUnit.MILLISECONDS);
     }
 
-    public void updatePose() {
+    public void exitOdometryThread() {
+        service.shutdown();
+    }
 
+    private void updatePose() {
+        try {
+            pose.transformTo(profiler.poll());
+        } catch (Exceptions.PoseTypeMismatch e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Pose getPose() {
+        return pose;
+    }
+
+    public double[] getPoseAsArray() {
+        return pose.getPose();
     }
 
 }
