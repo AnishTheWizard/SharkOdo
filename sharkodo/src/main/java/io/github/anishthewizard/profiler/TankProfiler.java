@@ -1,6 +1,6 @@
-package org.anishthewizard.profiler;
+package io.github.anishthewizard.profiler;
 
-import org.anishthewizard.pose.Twist2D;
+import io.github.anishthewizard.pose.Twist2D;
 
 public class TankProfiler implements Profiler {
     @Override

@@ -1,7 +1,6 @@
-package org.anishthewizard.sharkodo;
-import org.anishthewizard.pose.Pose;
-import org.anishthewizard.pose.Twist2D;
-import org.anishthewizard.profiler.Profiler;
+package io.github.anishthewizard.sharkodo;
+import io.github.anishthewizard.pose.Pose;
+import io.github.anishthewizard.profiler.Profiler;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

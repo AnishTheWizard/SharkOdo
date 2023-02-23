@@ -1,20 +1,22 @@
-package org.anishthewizard.pose;
+package io.github.anishthewizard.pose;
 
-import org.anishthewizard.sharkodo.Exceptions;
+import io.github.anishthewizard.sharkodo.Exceptions;
 
 public class Twist2D implements Pose {
 
-    private double x, y, theta;
+    private double x, y, theta, v, a;
 
-    public Twist2D(double x, double y, double theta) {
+    public Twist2D(double x, double y, double theta, double v, double a) {
         this.x = x;
         this.y = y;
         this.theta = theta;
+        this.v = v;
+        this.a = a;
     }
 
     @Override
     public double[] getPose() {
-        return new double[]{x, y, theta};
+        return new double[]{x, y, theta, v, a};
     }
 
     @Override
@@ -28,20 +30,9 @@ public class Twist2D implements Pose {
         }
         return new Twist2D(vector.getX() - getX(),
                 vector.getY() - getY(),
-                vector.getTheta() - getTheta());
-    }
-
-    @Override
-    public void transformTo(Pose p) throws Exceptions.PoseTypeMismatch {
-        if(p instanceof Twist2D) {
-            Twist2D delta = (Twist2D) getTransformation((Twist2D) p);
-            x += delta.getX();
-            y += delta.getY();
-            theta += delta.getTheta();
-        }
-        else {
-            throw new Exceptions.PoseTypeMismatch("Expected to get pose type Twist2D");
-        }
+                vector.getTheta() - getTheta(),
+                vector.getV() - getV(),
+                vector.getA() - getA());
     }
 
     @Override
@@ -59,7 +50,7 @@ public class Twist2D implements Pose {
     }
 
     public Twist2D createFactoredTwist(double factor) {
-        return new Twist2D(x*factor, y*factor, theta);
+        return new Twist2D(x*factor, y*factor, theta, v, a);
     }
 
     public double getX() {
@@ -74,6 +65,10 @@ public class Twist2D implements Pose {
         return theta;
     }
 
+    public double getV() {return v;}
+
+    public double getA() {return a;}
+
     public void setX(double x) {
         this.x = x;
     }
@@ -86,15 +81,24 @@ public class Twist2D implements Pose {
         this.theta = theta;
     }
 
+    public void setV(double v) {this.v = v;}
+
+    public void setA(double a) {this.a = a;}
+
     public void setTwist(double[] pose) {
         this.x = pose[0];
         this.y = pose[1];
         this.theta = pose[2];
+        this.v = pose[3];
+        this.a = pose[4];
+
     }
 
-    public void setTwist(double x, double y, double theta) {
+    public void setTwist(double x, double y, double theta, double v, double a) {
         this.x = x;
         this.y = y;
         this.theta = theta;
+        this.v = v;
+        this.a = a;
     }
 }

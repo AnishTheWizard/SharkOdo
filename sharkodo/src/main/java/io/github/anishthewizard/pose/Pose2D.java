@@ -1,6 +1,6 @@
-package org.anishthewizard.pose;
+package io.github.anishthewizard.pose;
 
-import org.anishthewizard.sharkodo.Exceptions;
+import io.github.anishthewizard.sharkodo.Exceptions;
 import java.util.Objects;
 
 public final class Pose2D implements Pose {
@@ -49,11 +49,6 @@ public final class Pose2D implements Pose {
     @Override
     public Pose getTransformation(Pose p) throws Exceptions.PoseTypeMismatch {
         return null;
-    }
-
-    @Override
-    public void transformTo(Pose p) {
-
     }
 
     @Override

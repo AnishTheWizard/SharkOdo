@@ -1,7 +1,7 @@
-package org.anishthewizard.profiler;
+package io.github.anishthewizard.profiler;
 
-import org.anishthewizard.pose.Pose;
-import org.anishthewizard.sharkodo.Exceptions;
+import io.github.anishthewizard.sharkodo.Exceptions;
+import io.github.anishthewizard.pose.Pose;
 
 public interface Profiler {
     public Pose poll() throws Exceptions.PoseTypeMismatch;
