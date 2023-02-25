@@ -1,6 +1,6 @@
-package io.github.anishthewizard.profiler;
+package frc.libs.sharkodo.profiler;
 
-import io.github.anishthewizard.pose.Twist2D;
+import frc.libs.sharkodo.pose.Twist2D;
 
 public class TankProfiler implements Profiler {
     @Override

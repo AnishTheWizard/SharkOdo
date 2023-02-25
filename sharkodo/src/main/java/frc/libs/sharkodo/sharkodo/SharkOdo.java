@@ -1,6 +1,6 @@
-package io.github.anishthewizard.sharkodo;
-import io.github.anishthewizard.pose.Pose;
-import io.github.anishthewizard.profiler.Profiler;
+package frc.libs.sharkodo.sharkodo;
+import frc.libs.sharkodo.pose.Pose;
+import frc.libs.sharkodo.profiler.Profiler;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -52,6 +52,16 @@ public class SharkOdo {
         synchronized (threadLock) {
             return pose;
         }
+    }
+
+    public synchronized double[] getPoseDelta(double[] target) {
+        double[] currentPose = pose.getPose();
+        double[] delta = new double[currentPose.length];
+        for(int i = 0; i < currentPose.length; i++) {
+            delta[i] = target[i] - currentPose[i];
+        }
+        return delta;
+
     }
 
     public void resetPose() {

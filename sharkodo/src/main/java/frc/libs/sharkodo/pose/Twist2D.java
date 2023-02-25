@@ -1,22 +1,21 @@
-package io.github.anishthewizard.pose;
+package frc.libs.sharkodo.pose;
 
-import io.github.anishthewizard.sharkodo.Exceptions;
+import frc.libs.sharkodo.sharkodo.Exceptions;
 
 public class Twist2D implements Pose {
 
-    private double x, y, theta, v, a;
+    private double x, y, theta, v;
 
-    public Twist2D(double x, double y, double theta, double v, double a) {
+    public Twist2D(double x, double y, double theta, double v) {
         this.x = x;
         this.y = y;
         this.theta = theta;
         this.v = v;
-        this.a = a;
     }
 
     @Override
     public double[] getPose() {
-        return new double[]{x, y, theta, v, a};
+        return new double[]{x, y, theta, v};
     }
 
     @Override
@@ -31,8 +30,7 @@ public class Twist2D implements Pose {
         return new Twist2D(vector.getX() - getX(),
                 vector.getY() - getY(),
                 vector.getTheta() - getTheta(),
-                vector.getV() - getV(),
-                vector.getA() - getA());
+                vector.getV() - getV());
     }
 
     @Override
@@ -50,7 +48,7 @@ public class Twist2D implements Pose {
     }
 
     public Twist2D createFactoredTwist(double factor) {
-        return new Twist2D(x*factor, y*factor, theta, v, a);
+        return new Twist2D(x*factor, y*factor, theta, v);
     }
 
     public double getX() {
@@ -67,8 +65,6 @@ public class Twist2D implements Pose {
 
     public double getV() {return v;}
 
-    public double getA() {return a;}
-
     public void setX(double x) {
         this.x = x;
     }
@@ -83,22 +79,17 @@ public class Twist2D implements Pose {
 
     public void setV(double v) {this.v = v;}
 
-    public void setA(double a) {this.a = a;}
-
     public void setTwist(double[] pose) {
         this.x = pose[0];
         this.y = pose[1];
         this.theta = pose[2];
         this.v = pose[3];
-        this.a = pose[4];
-
     }
 
-    public void setTwist(double x, double y, double theta, double v, double a) {
+    public void setTwist(double x, double y, double theta, double v) {
         this.x = x;
         this.y = y;
         this.theta = theta;
         this.v = v;
-        this.a = a;
     }
 }

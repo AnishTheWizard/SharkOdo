@@ -1,6 +1,6 @@
-package io.github.anishthewizard.pose;
+package frc.libs.sharkodo.pose;
 
-import io.github.anishthewizard.sharkodo.Exceptions;
+import frc.libs.sharkodo.sharkodo.Exceptions;
 import java.util.Objects;
 
 public final class Pose2D implements Pose {

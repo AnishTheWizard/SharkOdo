@@ -1,4 +1,4 @@
-package io.github.anishthewizard.sharkodo;
+package frc.libs.sharkodo.sharkodo;
 
 public class Exceptions {
     public static class PoseTypeMismatch extends Exception {
